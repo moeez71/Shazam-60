@@ -60,7 +60,7 @@ const PantryScreen = () => {
       })
   };
     const fetchAPI2 = async () => {
-    return await fetch('http://192.168.10.2:3000/pantry/adduser1', requestOptions)
+    return await fetch('http://192.168.23.98:3000/pantry/adduser1', requestOptions)
     .then(response => response.json())
     .then(data => console.log(data));
   }
@@ -146,7 +146,8 @@ const PantryScreen = () => {
        }
 
        const readDataMongo = async () => {
-         const uri = `http://192.168.10.2:3000/pantry/pantry/${user.uid}`
+       //  const uri = `http://localhost:3000/pantry/pantry/${user.uid}`
+       const uri = `http://192.168.23.98:3000/pantry/pantry/uO6WUKFb0paef644AoGzliM6OjC2`
           return await fetch(uri)
           .then((response) => response.json())
           .then((result) => {

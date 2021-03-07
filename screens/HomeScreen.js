@@ -35,7 +35,7 @@ const HomeScreen = ({navigation}) => {
     })
 };
   const fetchAPI2 = async () => {
-  return await fetch('http://192.168.10.2:3000/users/adduser', requestOptions)
+  return await fetch('http://localhost:3000/users/adduser', requestOptions)
   .then(response => response.json())
   .then(data => console.log(data));
 }
