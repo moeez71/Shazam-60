@@ -1,5 +1,5 @@
 import React, {useContext, useEffect}  from 'react';
-import { View, StyleSheet, SafeAreaView } from 'react-native';
+import { View, StyleSheet, SafeAreaView, LogBox } from 'react-native';
 import FormButton from '../components/FormButton';
 
 import {AuthContext} from '../navigation/AuthProvider';
@@ -10,11 +10,13 @@ import { Card } from 'react-native-paper';
 
 
 var User = require('../back/backend/models/user')
+LogBox.ignoreAllLogs()
 
 
 //const abcd = useContext(AuthContext)
 //const {user} = useContext(AuthContext);
 //exports.user = user
+
 const HomeScreen = ({navigation}) => {
   const {user, logout} = useContext(AuthContext);
 
@@ -35,7 +37,7 @@ const HomeScreen = ({navigation}) => {
     })
 };
   const fetchAPI2 = async () => {
-  return await fetch('http://localhost:3000/users/adduser', requestOptions)
+  return await fetch('http://192.168.143.98/users/adduser', requestOptions)
   .then(response => response.json())
   .then(data => console.log(data));
 }

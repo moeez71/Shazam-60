@@ -25,7 +25,7 @@ return(
 
         <View style = {{padding: 4,flexDirection: "row" , justifyContent : "flex-start"}}>
           <Text style={{fontWeight: "bold", paddingRight:6}}> Calories: </Text>
-          <Text style= {{color: "red"}}>{slug.calories} kcal</Text>
+          <Text style= {{color: "red"}}>{slug.calories} cal</Text>
         </View>
   
         <View style = {{padding: 4,flexDirection: "row" , justifyContent : "flex-start"}}>

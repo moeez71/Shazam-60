@@ -1,5 +1,5 @@
 import React, {useState, useEffect, useContext}  from 'react';
-import { View, StyleSheet, ScrollView , TouchableOpacity } from 'react-native';
+import { View, StyleSheet, ScrollView , TouchableOpacity , LogBox} from 'react-native';
 import { ActivityIndicator } from 'react-native-paper';
 import { ApplicationProvider, Layout, Text, Divider, Spinner, Input, Button } from '@ui-kitten/components';
 import AntDesign from 'react-native-vector-icons/AntDesign';
@@ -10,6 +10,7 @@ import NetInfo from "@react-native-community/netinfo";
 import AsyncStorage from '@react-native-community/async-storage';
 import {AuthContext} from '../navigation/AuthProvider';
 
+LogBox.ignoreAllLogs()
 const calrecord = ({navigation}) => {
 
     const {user} = useContext(AuthContext);
@@ -32,7 +33,7 @@ const calrecord = ({navigation}) => {
 
 
     const fetchAPI2 = async () => {
-      return await fetch('http://192.168.0.109:3000/calorie/adduser1', requestOptions)
+      return await fetch('http://192.168.143.98:3000/calorie/adduser1', requestOptions)
       .then(response => response.json())
       .then(data => console.log(data));
     }
@@ -42,17 +43,17 @@ const calrecord = ({navigation}) => {
       try {
        await AsyncStorage.setItem(user.uid+"999", JSON.stringify(data))
        // console.log(getWant)
-        alert('Deleted from async')
+       // alert('Deleted from async')
       } catch (e) {
-        alert('Failed to save the data to the storage')
+      //  alert('Failed to save the data to the storage')
       }
        NetInfo.fetch().then(state => {
          if (state.isConnected === true) {
            fetchAPI2()
-           alert("Successfully deleted hogaya saveData ka online chal gaya");
+         //  alert("Successfully deleted hogaya saveData ka online chal gaya");
           
          } else {
-           alert("You are offline in save 2!");
+         //  alert("You are offline in save 2!");
          }
        })
     }
@@ -85,7 +86,7 @@ const calrecord = ({navigation}) => {
         }
 
       } catch (e) {
-      alert('Failed to fetch the data from storageeee')
+     // alert('Failed to fetch the data from storageeee')
       }
     }
 
@@ -102,7 +103,7 @@ const calrecord = ({navigation}) => {
       }
 
 
-      const uri = `http://192.168.0.109:3000/calorie/calorie/${user.uid}`
+      const uri = `http://192.168.143.98:3000/calorie/calorie/${user.uid}`
        return await fetch(uri)
        .then((response) => response.json())
        .then((result) => {
@@ -124,10 +125,10 @@ const calrecord = ({navigation}) => {
          if (Platform.OS === "android") {
            NetInfo.fetch().then(state => {
              if (state.isConnected === true) {
-               alert("You are online!");
+           //    alert("You are online!");
                readDataMongo()
              } else {
-               alert("You are offlinjdje!");
+            //   alert("You are offlinjdje!");
                readData()
                
              }

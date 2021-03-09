@@ -74,16 +74,10 @@ const AppStack = () => {
                 drawerIcon: () => <Ionicons name='location-outline' color="#567" size={25}/>
                 }}
             /> 
-            <Drawer.Screen name="IngredientsToRecipeNav" component={IngredientsToRecipeNav} 
+            <Drawer.Screen name="Ingredients To Recipe" component={IngredientsToRecipeNav} 
                 options={{
                     drawerLabel: 'Make Recipe',
                 drawerIcon: () => <SimpleLineIcons name='chemistry' color="#567" size={25}/>
-                }}
-            />
-            <Drawer.Screen name="LogoutScreen" component={LogoutScreen}
-                options={{
-                    drawerLabel: 'Logout',
-                drawerIcon: () => <SimpleLineIcons name='logout' color="#567" size={25}/>
                 }}
             />
             <Drawer.Screen name="Camera" component={CameraStack}
@@ -98,6 +92,12 @@ const AppStack = () => {
                 drawerIcon: () => <AntDesign name='linechart' color="#567" size={25}/>
                 }}
             /> 
+            <Drawer.Screen name="LogoutScreen" component={LogoutScreen}
+                options={{
+                    drawerLabel: 'Logout',
+                drawerIcon: () => <SimpleLineIcons name='logout' color="#567" size={25}/>
+                }}
+            />
         </Drawer.Navigator>
     );
 }

@@ -1,10 +1,12 @@
 import React, { useState } from 'react';
-import { StyleSheet, TouchableOpacity, View, Image, ScrollView,ActivityIndicator, SafeAreaView } from 'react-native';
+import { StyleSheet, TouchableOpacity, View, Image, ScrollView,ActivityIndicator, SafeAreaView , LogBox} from 'react-native';
 import Ionicon from 'react-native-vector-icons/Ionicons';
 import { Text, Layout, List, ListItem, Button, Divider} from '@ui-kitten/components';
 import * as ImagePicker from 'expo-image-picker';
 import axios from 'axios';
 
+
+LogBox.ignoreAllLogs()
 const axiosClient = axios.create({
     baseURL: 'https://food-img-classifier.herokuapp.com',
     timeout: 50000, //50 seconds
@@ -31,8 +33,8 @@ export default function CameraNew({navigation}) {
     const renderItem = ({ item, index }) => (
         <ListItem
           title={()=><Text category="h5">{item.class}</Text>}
-          description={`${item.output}`}
-          accessoryRight={renderItemAccessory}
+          description={`Probability: ${item.output}`}
+          accessoryRight={() => renderItemAccessory(item)}
         />
       );
 

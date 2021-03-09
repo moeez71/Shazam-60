@@ -53,11 +53,19 @@ function MyTabs() {
 
 const Navigator2 = () => {
     return (
-      <Stack2.Navigator>
-        <Stack2.Screen 
-          name= "Calories"
-          component={MyTabs}
-          options = {{headerShown : false}} />
+       <Stack2.Navigator 
+       screenOptions={{
+    headerShown: false
+  }}
+       >
+         {/* <Stack2.Screen 
+           name= "Calories"
+           component={MyTabs}
+           options = {{headerShown : false}} /> */}
+
+<Stack2.Screen name="calgraphs" component={calgraphs} />
+   <Stack2.Screen name="calrecord" component={calrecord} />
+   <Stack2.Screen name="Calorie" component={Calorie} />
       </Stack2.Navigator>
     )
   }

@@ -1,9 +1,10 @@
 import React, {useState, useEffect}  from 'react';
-import { Icon, Input, Spinner, Layout } from '@ui-kitten/components';
+import { Icon, Input, Spinner, Layout,  } from '@ui-kitten/components';
 import Ionicon from 'react-native-vector-icons/Ionicons';
 
-import { View, TouchableWithoutFeedback, Text, StyleSheet, FlatList, Keyboard, ScrollView, TouchableOpacity, Button, Image, Linking  } from 'react-native';
+import { View, TouchableWithoutFeedback, Text, StyleSheet, FlatList, Keyboard, ScrollView, TouchableOpacity, Button, Image, Linking , LogBox } from 'react-native';
 
+LogBox.ignoreAllLogs()
 
 const CameraRecipe= ({navigation, route}) => {
 
@@ -19,12 +20,13 @@ const CameraRecipe= ({navigation, route}) => {
     const url = `https://api.edamam.com/search?q=${foodName}&app_id=${App_Id}&app_key=${App_Key}&from=0&to=30`;
 
     const fetchAPI = async ()=> {
-
+        console.log(foodName);
+        setIsLoading(true);
         return await fetch(url)
         .then((response) => response.json())
         .then((result) => {
             console.log(result);
-            setIsLoading(true);
+            setIsLoading(false);
             setRecipes(result.hits);
           //setImg(result.hits[0].recipe.uri)
          //console.log(recipes.recipe)
